@@ -37,7 +37,7 @@ export default async function handler(req, res) {
       },
       expand: ['latest_invoice.payment_intent'],
     });
-    console.log(subscription.id)
+    
     return res.json({
       message: "subscription active",
       clientSecret: subscription.latest_invoice.payment_intent.client_secret,

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { toast } from "react-hot-toast";
+import { DonateButton } from "./DonateButton";
 
-export const PaymentForm = () => {
+export const PaymentForm = ({setIsOpen}) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [amount, setAmount] = useState(5);
@@ -35,7 +36,10 @@ export const PaymentForm = () => {
       const data = await respone.json();
       console.log(data.clientSecret);
       const confirm = await stripe.confirmCardPayment(data.clientSecret);
-      if (confirm.error) return toast.error("payment unsuccessful!");
+      if (confirm.error) {
+        return toast.error("payment unsuccessful!");
+      }
+      setIsOpen(false);
       toast.success("payment accepted! Subscription Active!");
     } catch (err) {
       console.log(err);
@@ -62,7 +66,8 @@ export const PaymentForm = () => {
       <fieldset>
         <CardElement />
       </fieldset>
-      <button>{loading ? "..." : "Subcribe"}</button>
+      <button disabled={loading}>{loading? "..." : "Subscribe"}</button>
+
     </form>
   );
 };

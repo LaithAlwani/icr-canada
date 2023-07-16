@@ -1,7 +1,6 @@
 import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-console.log(typeof process.env.STRIPE_SECRET_KEY)
 
 export default async function handler(req, res) {
   if (req.method != "POST") return res.status(400);
@@ -38,7 +37,7 @@ export default async function handler(req, res) {
       },
       expand: ['latest_invoice.payment_intent'],
     });
-
+    console.log(subscription.id)
     return res.json({
       message: "subscription active",
       clientSecret: subscription.latest_invoice.payment_intent.client_secret,

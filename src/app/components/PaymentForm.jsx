@@ -33,7 +33,7 @@ export const PaymentForm = () => {
 
       if (!respone.ok) return toast.error("payment unsuccessful!");
       const data = await respone.json();
-      console.log(data);
+      console.log(data.clientSecret);
       const confirm = await stripe.confirmCardPayment(data.clientSecret);
       if (confirm.error) return toast.error("payment unsuccessful!");
       toast.success("payment accepted! Subscription Active!");

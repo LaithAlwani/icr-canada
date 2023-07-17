@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { toast } from "react-hot-toast";
 import { DonateButton } from "./DonateButton";
@@ -20,7 +20,9 @@ export const PaymentForm = ({ setIsOpen }) => {
 
   const createSubscription = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    const toastId = toast.loading("Proccessing payment");
+    toastId;
+    setLoading(true)
     try {
       const { error, paymentMethod } = await stripe.createPaymentMethod({
         type: "card",
@@ -44,12 +46,12 @@ export const PaymentForm = ({ setIsOpen }) => {
           }),
         });
 
-      if (!respone.ok) return toast.error("payment unsuccessful!");
+        if (!respone.ok) return toast.error("payment unsuccessful!");
         const data = await respone.json();
-        console.log(data.clientSecret);
+
         const confirm = await stripe.confirmCardPayment(data.clientSecret);
         if (confirm.error) {
-        return toast.error("payment unsuccessful!");
+          return toast.error("payment unsuccessful!");
         }
         setIsOpen(false);
         setName("");
@@ -59,13 +61,14 @@ export const PaymentForm = ({ setIsOpen }) => {
       } else {
         toast.error("please enter missing fields");
       }
-    } catch (err) {  
+    } catch (err) {
       toast.error(`payment failed ${err.message}`);
-    }
-    finally{
+    } finally {
       setLoading(false);
+      toast.dismiss(toastId);
     }
   };
+
   return (
     <form onSubmit={createSubscription}>
       <h3>Become a Donor</h3>

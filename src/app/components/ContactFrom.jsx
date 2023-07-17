@@ -10,6 +10,7 @@ export const ContactFrom = () => {
   const [emailError, setEmailError] = useState(false);
   const [text, setText] = useState("");
   const [textError, setTextError] = useState(false);
+  const[loading, setLoading] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,10 +18,17 @@ export const ContactFrom = () => {
     if (!email) setEmailError(true);
     if (!text) setTextError(true);
     if (name && email && text) {
-      setName("");
-      setEmail("");
-      setText("");
-      toast.success("Message sent!");
+      const toastId = toast.loading("Seding request");
+      toastId;
+      setLoading(true);
+      setTimeout(() => {
+        toast.dismiss(toastId);
+        setName("");
+        setEmail("");
+        setText("");
+        setLoading(false);
+        toast.success("Request sent!");
+      }, 3000);
     } else {
       toast.error("please enter missing fields");
     }
@@ -35,7 +43,7 @@ export const ContactFrom = () => {
           placeholder="Name"
           value={name}
           onChange={(e) => {
-            setName(e.target.value)
+            setName(e.target.value);
             setNameError(false);
           }}
           className={nameError ? "invalid" : ""}
@@ -45,7 +53,7 @@ export const ContactFrom = () => {
           placeholder="Email"
           value={email}
           onChange={(e) => {
-            setEmail(e.target.value)
+            setEmail(e.target.value);
             setEmailError(false);
           }}
           className={emailError ? "invalid" : ""}
@@ -58,12 +66,12 @@ export const ContactFrom = () => {
           placeholder="Message..."
           value={text}
           onChange={(e) => {
-            setText(e.target.value)
+            setText(e.target.value);
             setTextError(false);
           }}
           className={textError ? "invalid" : ""}></textarea>
 
-        <button>Submit</button>
+        <button disabled={loading}>{loading ? "..." : "Submit"}</button>
       </form>
     </section>
   );

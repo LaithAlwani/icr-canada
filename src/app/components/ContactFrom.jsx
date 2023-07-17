@@ -29,7 +29,7 @@ export const ContactFrom = () => {
   return (
     <section>
       <h2>Contact Us</h2>
-      <form className="model" onSubmit={handleSubmit}>
+      <form className="model p-0" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Name"

@@ -3,7 +3,7 @@ import React from "react";
 export const About = () => {
   return (
     <section>
-      <h2>About Islamic Community Relief Fund (ICRF)</h2>
+      <h2>What is ICRF?</h2>
       <p>
         The Islamic Community Relief Fund (ICRF) is an esteemed organization that originated in
         Ottawa, Ontario, with a profound purpose of providing support to Islamic entities throughout

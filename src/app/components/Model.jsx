@@ -1,4 +1,4 @@
-import React from "react";
+import {MdClose} from "react-icons/md";
 
 export const Model = ({ children, handleClose}) => {
   return (
@@ -6,7 +6,7 @@ export const Model = ({ children, handleClose}) => {
       {console.log(children)}
       <div className="model">
         <span className="close-btn" onClick={() => handleClose(false)}>
-          X
+          <MdClose color="red" size={24}/>
         </span>
         {children}
       </div>

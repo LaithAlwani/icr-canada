@@ -4,7 +4,7 @@ import "./globals.css";
 import {FaFacebookF,FaInstagram, FaTwitter} from "react-icons/fa"
 
 export const metadata = {
-  title: "ICR-Canada",
+  title: "ICRF-Canada",
   description: "Dontaite to a better Muslim Community in Canada",
 };
 

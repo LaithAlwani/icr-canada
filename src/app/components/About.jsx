@@ -29,7 +29,7 @@ export const About = () => {
         approach, ICRF collects monthly funds from subscribers and ensures their efficient
         distribution to registered organizations. Through its collective efforts and diverse range
         of supported activities, ICRF aims to make a positive and lasting impact on the Islamic
-        community's well-being and development.
+        community&apos;s well-being and development.
       </p>
     </section>
   );

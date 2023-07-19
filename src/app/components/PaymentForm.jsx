@@ -76,7 +76,7 @@ export const PaymentForm = ({ setIsOpen }) => {
 
       <input
         type="text"
-        placeholder="name"
+        placeholder="Full Name"
         onChange={(e) => {
           setName(e.target.value);
           setNameError(false);
@@ -86,7 +86,7 @@ export const PaymentForm = ({ setIsOpen }) => {
 
       <input
         type="email"
-        placeholder="email"
+        placeholder="Email"
         onChange={(e) => {
           setEmail(e.target.value);
           setEmailError(false);
@@ -96,12 +96,13 @@ export const PaymentForm = ({ setIsOpen }) => {
 
       <input
         type="number"
-        placeholder="$ Amount"
+        placeholder="Donation Amount minimum $5"
         onChange={(e) => {
           setAmount(e.target.value);
           setAmountError(false);
         }}
         min={5}
+        max={1000}
         className={amountError ? "invalid" : ""}
       />
 

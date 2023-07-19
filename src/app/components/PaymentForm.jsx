@@ -113,7 +113,7 @@ export const PaymentForm = ({ setIsOpen }) => {
           }}
         />
       </fieldset>
-      <button disabled={loading}>{loading ? "..." : "Subscribe"}</button>
+      <button disabled={loading} className={loading ?"disabled-btn":""}>{loading ? "Proccessing Payment..." : "Subscribe"}</button>
     </form>
   );
 };

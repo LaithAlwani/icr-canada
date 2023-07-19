@@ -28,6 +28,11 @@ button {
   border-radius: 0.25rem;
 }
 
+.disabled-btn{
+  background-color: rgb(229, 125, 125);
+  cursor: not-allowed;
+}
+
 input,
 textarea,
 fieldset {

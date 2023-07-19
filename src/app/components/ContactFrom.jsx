@@ -71,7 +71,7 @@ export const ContactFrom = () => {
           }}
           className={textError ? "invalid" : ""}></textarea>
 
-        <button disabled={loading}>{loading ? "..." : "Submit"}</button>
+        <button disabled={loading} className={loading ?"disabled-btn":""}>{loading ? "Sending request..." : "Submit"}</button>
       </form>
     </section>
   );
